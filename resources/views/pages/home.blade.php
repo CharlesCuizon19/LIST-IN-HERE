@@ -221,7 +221,7 @@
         </div>
 
 
-        <div class="flex flex-col w-full gap-10 pt-20 pb-32 bg-white">
+        <div class="flex flex-col w-full gap-10 pt-20 bg-white pb-36">
             <div class="text-center text-[#25464b] text-3xl xl:text-5xl font-bold flex items-center justify-center">
                 <div class="w-[35%] leading-snug">
                     Building Trust Through <span class="text-[#edbb28]">Real Estate</span> Excellence

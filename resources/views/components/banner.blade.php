@@ -15,25 +15,32 @@
     ];
 @endphp
 
-<div class="p-2">
-    <div class="swiper myBannerSwiper relative h-[60rem] rounded-3xl">
+@props([
+    'page' => 'Page prop',
+    'pageBanner' => '',
+])
 
-        <div class="h-full swiper-wrapper">
+<div class="p-2">
+    <div class="swiper {{ Route::is('home') ? 'myBannerSwiper h-[60rem]' : 'h-[22rem]' }}  relative  rounded-3xl">
+
+        <div class="h-full {{ Route::is('home') ? 'swiper-wrapper' : '' }}">
 
             @foreach ($banners as $item)
                 <div class="relative swiper-slide">
 
                     {{-- Banner Image --}}
-                    <img src="{{ asset($item->banner_image) }}" alt="" class="object-cover w-full h-full">
+                    <img src="{{ Route::is('home') ? asset($item->banner_image) : asset($pageBanner) }}" alt=""
+                        class="object-cover w-full h-full">
 
                     {{-- Centered Title --}}
                     <div
-                        class="absolute inset-0 z-20 flex items-center justify-center font-bold text-white text-[96px] mx-[30rem] text-center">
-                        {{ $item->title }}
+                        class="absolute inset-0 z-20 flex items-center justify-center font-bold text-white {{ Route::is('home') ? 'text-[96px]' : 'mt-36 text-7xl' }} mx-[30rem] text-center">
+                        {{ Route::is('home') ? $item->title : $page }}
                     </div>
 
 
-                    <div class="absolute inset-0 flex items-center justify-center mt-[25rem] z-30">
+                    <div
+                        class="{{ Route::is('home') ? 'flex' : 'hidden' }} absolute inset-0 flex items-center justify-center mt-[25rem] z-30">
                         <x-button color="bg-gradient-to-b from-[#f6e887] to-[#feb101]" button="Browse Properties"
                             route="home" />
                     </div>
@@ -44,10 +51,11 @@
 
         {{-- Gradient sheet --}}
         <div
-            class="absolute inset-0 bg-gradient-to-b from-[#25464b] via-transparent to-transparent opacity-60 z-10 pointer-events-none rounded-3xl">
+            class="absolute inset-0 bg-gradient-to-b from-[#25464b] via-transparent to-transparent z-10 pointer-events-none rounded-3xl">
         </div>
 
-        <div class="absolute z-20 flex items-center justify-center w-full max-w-full px-20 top-[30rem] h-fit">
+        <div
+            class="{{ Route::is('home') ? 'flex' : 'hidden' }} absolute z-20 flex items-center justify-center w-full max-w-full px-20 top-[30rem] h-fit">
             <div class="flex justify-between w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                     class="text-white size-8 banner-button-prev">
