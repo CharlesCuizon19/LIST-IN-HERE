@@ -9,113 +9,135 @@
                 <div class="flex flex-col col-span-3 gap-5">
                     <div class="flex justify-between w-full">
                         <div>
-                            <div x-data="{ open: false, selected: 'Newest' }" class="relative inline-block text-lg">
+                            <!-- SORTING - NOW FULLY WORKING -->
+                            <div x-data="sortDropdown()" class="relative inline-block text-lg">
                                 <div class="flex items-center gap-1 text-gray-400">
                                     <span>Sort by:</span>
-
                                     <button @click="open = !open"
                                         class="flex items-center gap-1 text-[#13294B] font-semibold">
-                                        <span x-text="selected"></span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500"
-                                            viewBox="0 0 24 24" fill="none">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                                stroke-width="1.5" d="M6 9l6 6 6-6" />
+                                        <span x-text="selectedLabel"></span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-gray-500" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 9l-7 7-7-7" />
                                         </svg>
                                     </button>
                                 </div>
 
-                                <!-- Dropdown -->
+                                <!-- Dropdown Menu -->
                                 <div x-show="open" @click.away="open = false"
-                                    class="absolute z-20 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg w-36">
-                                    <ul class="text-lg text-gray-700">
-                                        <li>
-                                            <button @click="selected = 'Newest'; open = false"
-                                                class="w-full px-4 py-2 text-left hover:bg-gray-100">Newest</button>
-                                        </li>
-                                        <li>
-                                            <button @click="selected = 'Oldest'; open = false"
-                                                class="w-full px-4 py-2 text-left hover:bg-gray-100">Oldest</button>
-                                        </li>
-                                        <li>
-                                            <button @click="selected = 'Price: Low to High'; open = false"
-                                                class="w-full px-4 py-2 text-left hover:bg-gray-100">Price: Low to
-                                                High</button>
-                                        </li>
-                                        <li>
-                                            <button @click="selected = 'Price: High to Low'; open = false"
-                                                class="w-full px-4 py-2 text-left hover:bg-gray-100">Price: High to
-                                                Low</button>
-                                        </li>
+                                    class="absolute z-20 w-48 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg">
+                                    <ul class="py-1 text-gray-700">
+                                        @foreach ([
+            'Newest' => 'latest',
+            'Oldest' => 'oldest',
+            'Price: Low to High' => 'price_asc',
+            'Price: High to Low' => 'price_desc',
+        ] as $label => $value)
+                                            <li>
+                                                <button @click="select('{{ $label }}', '{{ $value }}')"
+                                                    class="w-full px-4 py-2 text-left hover:bg-gray-100">
+                                                    {{ $label }}
+                                                </button>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                             </div>
-
                         </div>
+
                         <div class="text-lg">
                             <span class="text-gray-400">Showing all <span
-                                    class="text-[#515c72] font-semibold">{{ $listingCount }}
-                                    listings</span></span>
+                                    class="text-[#515c72] font-semibold">{{ $listingCount }} listings</span></span>
                         </div>
                     </div>
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-7">
-                        @foreach ($listings as $item)
-                            <a href="{{ route('properties.show', ['id' => $item->id, 'slug' => Str::slug($item->name)]) }}"
-                                class="flex flex-col group">
-                                <div class="h-[15rem] w-full relative z-10 overflow-hidden rounded-t-xl">
-                                    <img src="{{ asset($item->image) }}" alt=""
-                                        class="object-cover w-full h-full transition duration-500 group-hover:scale-105">
+                    <!-- Swiper Container -->
+                    <div class="relative">
+                        <div class="swiper propertiesSwiper">
+                            <div class="swiper-wrapper">
 
-                                    <div
-                                        class="absolute top-3 left-3 text-[#0a1a3a] font-medium bg-white text-sm rounded-full px-3 py-1">
-                                        {{ $item->category }}
-                                    </div>
+                                @if (!$listings->isEmpty())
+                                    @foreach ($listings->chunk(8) as $chunk)
+                                        <div class="swiper-slide">
+                                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-7">
+                                                @foreach ($chunk as $item)
+                                                    <div class="flex flex-col cursor-pointer group" x-data
+                                                        @click="$dispatch('open-inquiry-modal', {
+                                        id: '{{ $item->id }}',
+                                        slug: '{{ Str::slug($item->name) }}',
+                                        name: '{{ addslashes($item->name) }}',
+                                        price: '{{ number_format($item->price, 0, '.', ',') }}',
+                                        location: '{{ addslashes($item->location) }}',
+                                        image: '{{ asset($item->image) }}',
+                                        bedroom: '{{ $item->bedroom }}',
+                                        sqft: '{{ $item->sqft }}',
+                                        type: '{{ $item->type === 'rent' ? 'For Rent' : 'For Sale' }}',
+                                        category: '{{ $item->category }}'
+                                    })">
 
-                                    {{-- For Sale / For Rent badge (right) --}}
-                                    <div
-                                        class="absolute hidden top-3 right-3 text-white font-medium text-sm rounded-full px-4 py-1.5 z-10 shadow-md
-        {{ $item->type === 'rent' ? 'bg-red-600' : 'bg-green-600' }}">
-                                        {{ $item->type === 'rent' ? 'For Rent' : 'For Sale' }}
-                                    </div>
-                                </div>
-                                <div
-                                    class="flex flex-col gap-3 p-5 transition duration-500 bg-white rounded-b-xl group-hover:drop-shadow-lg">
-                                    <span
-                                        class="text-[#25464b] text-xl font-bold">₱{{ number_format($item->price, 0, '.', ',') }}</span>
-                                    <div class="flex flex-col gap-1">
-                                        <span class="text-[#0a1a3a] text-xl">{{ $item->name }}</span>
-                                        <span class="text-black/50">{{ $item->location }}</span>
-                                    </div>
-                                    <div class="flex items-center gap-5">
-                                        <div class="flex items-center gap-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                class="size-7 text-black/50">
-                                                <path fill="currentColor"
-                                                    d="M3 18v-5q0-.444.256-.946T4 11.3V9q0-.846.577-1.423T6 7h4.5q.517 0 .883.213q.365.212.617.587q.252-.375.617-.587Q12.983 7 13.5 7H18q.846 0 1.423.577T20 9v2.3q.489.252.744.754q.256.502.256.946v5h-1v-2H4v2zm9.5-7H19V9q0-.425-.288-.712T18 8h-4.5q-.425 0-.712.288T12.5 9zM5 11h6.5V9q0-.425-.288-.712T10.5 8H6q-.425 0-.712.288T5 9zm-1 4h16v-2q0-.425-.288-.712T19 12H5q-.425 0-.712.288T4 13zm16 0H4z" />
-                                            </svg>
-                                            <span class="text-[#0a1a3a]">{{ $item->bedroom }} Bed(s)</span>
+                                                        <!-- CARD CONTENT SAME AS YOUR ORIGINAL -->
+                                                        <div
+                                                            class="h-[15rem] w-full relative z-10 overflow-hidden rounded-t-xl">
+                                                            <img src="{{ asset($item->image) }}"
+                                                                class="object-cover w-full h-full transition duration-500 group-hover:scale-105">
+                                                            <div
+                                                                class="absolute top-3 left-3 text-[#0a1a3a] font-medium bg-white text-sm rounded-full px-3 py-1">
+                                                                {{ $item->category }}
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="flex flex-col gap-3 p-5 bg-white rounded-b-xl">
+                                                            <span class="text-[#25464b] text-xl font-bold">
+                                                                ₱{{ number_format($item->price, 0, '.', ',') }}
+                                                            </span>
+                                                            <span class="text-[#0a1a3a] text-xl">{{ $item->name }}</span>
+                                                            <span class="text-black/50">{{ $item->location }}</span>
+                                                        </div>
+                                                    </div>
+                                                @endforeach
+                                            </div>
                                         </div>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                            class="text-[#fba832] size-8">
-                                            <circle cx="12.1" cy="12.1" r="1" fill="none" stroke="currentColor"
-                                                stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
-                                        </svg>
-                                        <div class="flex items-center gap-1">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="24"
-                                                viewBox="0 0 25 24" class="text-black/50">
-                                                <path fill="currentColor"
-                                                    d="M3.563 5.5a2.25 2.25 0 0 1 2.25-2.25h2.5a.75.75 0 1 1 0 1.5h-2.5a.75.75 0 0 0-.75.75V8a.75.75 0 0 1-1.5 0zM15.561 4a.75.75 0 0 1 .75-.75h2.5a2.25 2.25 0 0 1 2.25 2.25V8a.75.75 0 1 1-1.5 0V5.5a.75.75 0 0 0-.75-.75h-2.5a.75.75 0 0 1-.75-.75M4.313 15.25a.75.75 0 0 1 .75.75v2.5c0 .414.335.75.75.75h2.5a.75.75 0 0 1 0 1.5h-2.5a2.25 2.25 0 0 1-2.25-2.25V16a.75.75 0 0 1 .75-.75m15.998 0a.75.75 0 0 1 .75.75v2.5a2.25 2.25 0 0 1-2.25 2.25h-2.5a.75.75 0 0 1 0-1.5h2.5a.75.75 0 0 0 .75-.75V16a.75.75 0 0 1 .75-.75" />
-                                            </svg>
-                                            <span class="text-[#0a1a3a]">{{ $item->sqft }} sq. ft.</span>
-                                        </div>
+                                    @endforeach
+                                @else
+                                    <div class="grid items-center justify-center w-full h-screen col-span-2 text-center">
+                                        <span class="text-black/50">No properties found.</span>
                                     </div>
-                                </div>
-                            </a>
-                        @endforeach
+                                @endif
 
+                            </div>
+
+                            <!-- Navigation + Pagination -->
+                            <div class="flex items-center justify-center gap-10 mt-10">
+
+                                <!-- Prev arrow -->
+                                <div class="swiper-properties-prev cursor-pointer text-[#204046]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="size-6">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2" d="m14 7l-5 5l5 5" />
+                                    </svg>
+                                </div>
+
+                                <!-- Pagination Numbers -->
+                                <div class="swiper-properties-pagination"></div>
+
+                                <!-- Next arrow -->
+                                <div class="swiper-properties-next cursor-pointer text-[#204046]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="rotate-180 size-6">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="2" d="m14 7l-5 5l5 5" />
+                                    </svg>
+                                </div>
+
+                            </div>
+
+
+                        </div>
                     </div>
+
                 </div>
                 <div class="col-span-2">
                     <form method="GET" action="{{ request()->url() }}" id="filter-form">
+                        <input type="hidden" name="sort" id="sort-input" value="{{ request('sort', 'latest') }}">
                         <div class="w-full p-8 bg-white border border-gray-100 shadow-sm rounded-3xl">
 
                             {{-- Search Bar --}}
@@ -214,10 +236,169 @@
                 </div>
             </div>
         </div>
-
     </div>
 
+    <!-- Inquiry Modal -->
+    <div x-data="inquiryModal()" x-show="open" x-transition @open-inquiry-modal.window="openModal($event.detail)"
+        x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+        @keydown.escape.window="open = false">
+
+        <div @click.outside="open = false" class="w-full max-w-xl overflow-hidden bg-white shadow-2xl rounded-2xl">
+
+            <div class="flex">
+
+                <div class="p-8">
+                    <div class="flex flex-col mb-6">
+                        <!-- Title -->
+                        <h2 class="text-2xl font-bold text-[#1a2f2b]">
+                            Interested in This Property?
+                        </h2>
+
+                        <p class="mt-2 leading-relaxed text-gray-600">
+                            Fill out the form below and our agent will get in touch with you shortly.
+                        </p>
+                    </div>
+
+                    <form @submit.prevent="submitInquiry" class="space-y-5">
+
+                        <!-- Full Name -->
+                        <div>
+                            <label class="block mb-1 font-semibold text-gray-700">Full Name</label>
+                            <input type="text"
+                                class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500"
+                                placeholder="Enter full name" required>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label class="block mb-1 font-semibold text-gray-700">Email Address</label>
+                            <input type="email"
+                                class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500"
+                                placeholder="Enter email address" required>
+                        </div>
+
+                        <!-- Contact Number -->
+                        <div>
+                            <label class="block mb-1 font-semibold text-gray-700">Contact Number</label>
+                            <input type="text"
+                                class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500"
+                                placeholder="Enter contact number" required>
+                        </div>
+
+                        <!-- Company Name -->
+                        <div>
+                            <label class="block mb-1 font-semibold text-gray-700">Company Name</label>
+                            <input type="text"
+                                class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500"
+                                placeholder="Enter company name" required>
+                        </div>
+
+                        <!-- Position -->
+                        <div>
+                            <label class="block mb-1 font-semibold text-gray-700">Position</label>
+                            <input type="text"
+                                class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-teal-500"
+                                placeholder="Enter position" required>
+                        </div>
+
+                        <!-- Disclaimer -->
+                        <p class="text-sm leading-relaxed text-gray-500">
+                            By submitting, you agree that ListInHere and its partners may contact
+                            you via call or text, including automated messages.
+                            See our
+                            <a href="#" class="font-semibold text-orange-600">[Terms of Service]</a>
+                            and
+                            <a href="#" class="font-semibold text-orange-600">[Privacy Policy]</a>.
+                        </p>
+
+                        <!-- Buttons -->
+                        <div class="flex gap-4 pt-2">
+                            <!-- Submit -->
+                            <button type="submit"
+                                class="w-full px-8 py-3 font-normal text-black rounded-lg shadow bg-gradient-to-b from-[#f6e887] to-[#feb101] hover:opacity-90">
+                                Submit Form
+                            </button>
+
+                            <!-- Cancel -->
+                            <button type="button" @click="open = false"
+                                class="w-full px-8 py-3 font-normal text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300">
+                                Cancel
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Bullet container */
+        .swiper-properties-pagination {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        /* Default bullet (numbers only) */
+        .custom-bullet {
+            width: 38px;
+            /* set same width & height */
+            height: 38px;
+            border-radius: 50%;
+            /* perfect circle */
+            display: flex;
+            /* center number */
+            justify-content: center;
+            align-items: center;
+            font-size: 1rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        /* Active bullet (circle) */
+        .custom-bullet.swiper-pagination-bullet-active {
+            background-color: #204046;
+            /* same dark teal as your image */
+            color: white !important;
+            border-radius: 100%;
+            padding: 12px 12px;
+        }
+    </style>
+
+
     <script>
+        const propertiesSwiper = new Swiper('.propertiesSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            navigation: {
+                nextEl: '.swiper-properties-next',
+                prevEl: '.swiper-properties-prev',
+            },
+            pagination: {
+                el: '.swiper-properties-pagination',
+                clickable: true,
+                renderBullet: function(index, className) {
+                    return `<span class="custom-bullet ${className}">${index + 1}</span>`;
+                },
+            },
+        });
+
+        function sortDropdown() {
+            return {
+                open: false,
+                selectedLabel: '{{ request('sort') == 'latest' ? 'Newest' : (request('sort') == 'oldest' ? 'Oldest' : (request('sort') == 'price_asc' ? 'Price: Low to High' : (request('sort') == 'price_desc' ? 'Price: High to Low' : 'Newest'))) }}',
+
+                select(label, value) {
+                    this.selectedLabel = label;
+                    this.open = false;
+                    document.getElementById('sort-input').value = value;
+                    document.getElementById('filter-form').submit();
+                }
+            }
+        }
+
         document.addEventListener('alpine:init', () => {
             Alpine.data('sort', () => ({
                 selected: '{{ request('sort', 'Newest') }}',
@@ -251,8 +432,53 @@
                 }
             }));
         });
-    </script>
 
-    <!-- Hidden input for sort -->
-    <input type="hidden" name="sort" id="sort-input" value="{{ request('sort', 'latest') }}">
+        function inquiryModal() {
+            return {
+                open: false,
+                property: {
+                    id: '',
+                    slug: '',
+                    name: '',
+                    price: '',
+                    location: '',
+                    image: '',
+                    bedroom: '',
+                    sqft: '',
+                    type: '',
+                    category: ''
+                },
+                form: {
+                    name: '',
+                    email: '',
+                    phone: '',
+                    message: ''
+                },
+
+                openModal(data) {
+                    this.property = data;
+                    this.form = {
+                        name: '',
+                        email: '',
+                        phone: '',
+                        message: ''
+                    }; // reset form
+                    this.open = true;
+                },
+
+                submitInquiry() {
+                    // Build the final URL
+                    const baseUrl = `/properties/${this.property.id}/${this.property.slug}`;
+                    const params = new URLSearchParams(this.form).toString();
+                    const finalUrl = `${baseUrl}?${params}`;
+
+                    // Redirect to single property page with inquiry data
+                    window.location.href = finalUrl;
+
+                    // Optional: close modal after redirect (won't be seen)
+                    this.open = false;
+                }
+            }
+        }
+    </script>
 @endsection

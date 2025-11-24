@@ -172,9 +172,9 @@
                     </div>
                 </div>
 
-                <div class="w-full max-w-md col-span-2 p-8 bg-white rounded-lg shadow-lg h-fit">
+                <div class="w-full col-span-2 p-8 bg-white rounded-lg shadow-lg h-fit">
                     <a href="{{ route('properties.all') }}"
-                        class="flex items-center gap-1 mb-4 text-sm text-gray-500 group">
+                        class="flex items-center gap-1 pb-5 mb-4 text-sm text-gray-500 border-b group">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             class="transition duration-300 group-hover:-translate-x-1">
                             <path fill="currentColor"
@@ -193,7 +193,7 @@
                             <input type="date" name="appointment_date"
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400" />
                         </div>
-                        <div>
+                        <div class="pb-5 border-b">
                             <label class="block mb-1 text-gray-700">Appointment Location</label>
                             <input type="text" name="appointment_location" placeholder="Enter appointment location"
                                 class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-400" />
@@ -232,8 +232,9 @@
                         </p>
 
                         <button type="submit"
-                            class="w-full px-4 py-2 mt-4 font-semibold text-white bg-yellow-500 rounded-md hover:bg-yellow-600">Set
-                            Appointment</button>
+                            class="w-full px-4 py-2 mt-4 font-normal text-black bg-gradient-to-b from-[#f6e887] to-[#feb101] rounded-md hover:bg-yellow-600">Set
+                            Appointment
+                        </button>
                     </form>
                 </div>
 

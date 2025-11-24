@@ -239,6 +239,45 @@ class PageController extends Controller
                 'type' => 'buy',
                 'created_at' => '2025-01-20 17:12:39',
             ],
+            (object) [
+                'id' => 9,
+                'name' => 'Skylight Executive Studio',
+                'location' => 'Davao City Center',
+                'price' => 2800000,
+                'price_formatted' => '2,800,000',
+                'image' => 'images/listing8.png',
+                'bedroom' => 1,
+                'sqft' => 280,
+                'category' => 'Vacation Villa',
+                'type' => 'buy',
+                'created_at' => '2025-01-20 17:12:39',
+            ],
+            (object) [
+                'id' => 10,
+                'name' => 'Skylight Executive Studio',
+                'location' => 'Davao City Center',
+                'price' => 2800000,
+                'price_formatted' => '2,800,000',
+                'image' => 'images/listing8.png',
+                'bedroom' => 1,
+                'sqft' => 280,
+                'category' => 'Vacation Villa',
+                'type' => 'buy',
+                'created_at' => '2025-01-20 17:12:39',
+            ],
+            (object) [
+                'id' => 11,
+                'name' => 'Skylight Executive Studio',
+                'location' => 'Davao City Center',
+                'price' => 2800000,
+                'price_formatted' => '2,800,000',
+                'image' => 'images/listing8.png',
+                'bedroom' => 1,
+                'sqft' => 280,
+                'category' => 'Vacation Villa',
+                'type' => 'buy',
+                'created_at' => '2025-01-20 17:12:39',
+            ],
         ]);
 
         // === FILTERING ===
@@ -292,12 +331,19 @@ class PageController extends Controller
         // === SORTING ===
         $sort = $request->get('sort', 'latest');
 
+        // Convert created_at strings into Carbon for correct sorting
+        $query = $query->map(function ($item) {
+            $item->created_at = \Carbon\Carbon::parse($item->created_at);
+            return $item;
+        });
+
         $query = match ($sort) {
             'oldest'       => $query->sortBy('created_at'),
             'price_asc'    => $query->sortBy('price'),
             'price_desc'   => $query->sortByDesc('price'),
-            default        => $query->sortByDesc('created_at'), // newest
+            default        => $query->sortByDesc('created_at'), // newest (latest)
         };
+
 
         // Convert back to collection with values() to re-index
         $listings = $query->values();
@@ -544,5 +590,9 @@ class PageController extends Controller
         }
 
         return view('pages.property-singlepage', compact('property', 'listings'));
+    }
+    public function contactUs()
+    {
+        return view('pages.contact-us');
     }
 }

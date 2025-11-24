@@ -1,5 +1,5 @@
 <footer class="bg-[#f5f5f5]">
-    <div class="relative">
+    <div class="relative {{ Route::is('contact-us') ? 'hidden' : 'flex' }}">
         <div class="p-3 overflow-hidden rounded-2xl">
             <img src="{{ asset('images/footer-rectangle.png') }}" alt=""
                 class="object-cover w-full h-full rounded-lg">
@@ -53,9 +53,7 @@
                                 d="M16.6 5.82s.51.5 0 0A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.5c-1.42 0-2.6-1.16-2.6-2.6c0-1.72 1.66-3.01 3.37-2.48V9.66c-3.45-.46-6.47 2.22-6.47 5.64c0 3.33 2.76 5.7 5.69 5.7c3.14 0 5.69-2.55 5.69-5.7V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3s-1.88.09-3.24-1.48" />
                         </svg>
                     </div>
-                    <a href="#"
-                        class="px-6 py-3 text-lg w-fit font-normal text-gray-900 bg-gradient-to-b from-[#f6e887] to-[#feb101] rounded-md hover:bg-yellow-600">Inquire
-                        Now</a>
+                    <x-verify-question-modal />
                 </div>
                 <div class="flex flex-wrap col-span-3 gap-x-[10rem] gap-y-10">
                     <div class="flex flex-col gap-5 w-fit">
@@ -69,7 +67,7 @@
                             </svg>
                             <span class="text-lg">Home</span>
                         </a>
-                        <a href="{{ route('home') }}"
+                        <a href="{{ route('about-us') }}"
                             class="flex items-center gap-2 {{ Route::is('about-us') ? 'text-[#25464b] font-medium' : 'text-black/70' }} group">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 class="transition duration-500 group-hover:translate-x-2 group-hover:rotate-45">
@@ -78,8 +76,8 @@
                             </svg>
                             <span class="text-lg">About Us</span>
                         </a>
-                        <a href="{{ route('home') }}"
-                            class="flex items-center gap-2 {{ Route::is('home') ? 'text-[#25464b] font-medium' : 'text-black/70' }} group">
+                        <a href="{{ route('properties.all') }}"
+                            class="flex items-center gap-2 {{ Route::is('properties.*') ? 'text-[#25464b] font-medium' : 'text-black/70' }} group">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 class="transition duration-500 group-hover:translate-x-2 group-hover:rotate-45">
                                 <path fill="currentColor"
@@ -87,8 +85,8 @@
                             </svg>
                             <span class="text-lg">Property</span>
                         </a>
-                        <a href="{{ route('home') }}"
-                            class="flex items-center gap-2 {{ Route::is('home') ? 'text-[#25464b] font-medium' : 'text-black/70' }} group">
+                        <a href="{{ route('contact-us') }}"
+                            class="flex items-center gap-2 {{ Route::is('contact-us') ? 'text-[#25464b] font-medium' : 'text-black/70' }} group">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 class="transition duration-500 group-hover:translate-x-2 group-hover:rotate-45">
                                 <path fill="currentColor"

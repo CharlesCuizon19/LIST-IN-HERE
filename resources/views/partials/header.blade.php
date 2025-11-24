@@ -3,7 +3,7 @@
      show = currentY < 50;
      lastY = currentY;
  });"
-     :class="show ? 'translate-y-0' : 'bg-[#25464B]/70 backdrop-blur-sm'"
+     :class="show ? 'translate-y-0' : 'bg-[#25464B]/80 backdrop-blur-sm'"
      class="fixed top-0 left-0 z-50 w-full text-white transition-all duration-300 bg-transparent">
      <div class="container flex items-center justify-between py-3 mx-auto lg:py-4">
 
@@ -37,15 +37,14 @@
              <nav class="items-center hidden text-lg font-normal space-x-14 lg:flex">
                  <a href="{{ route('properties.all') }}"
                      class="{{ Route::is('properties.*') ? 'text-[#EDBB28] font-medium' : 'text-white' }}">Property</a>
-                 <a href="#" class="hover:text-[#EDBB28]">Contact Us</a>
+                 <a href="{{ route('contact-us') }}"
+                     class="{{ Route::is('contact-us') ? 'text-[#EDBB28] font-medium' : 'text-white' }}">Contact Us</a>
              </nav>
          </div>
 
          <!-- Right: Buttons -->
          <div class="flex items-center space-x-4">
-             <a href="#"
-                 class="px-6 py-3 text-lg font-normal text-gray-900 bg-gradient-to-b from-[#f6e887] to-[#feb101] rounded-md hover:bg-yellow-600">Inquire
-                 Now</a>
+             <x-verify-question-modal />
              <div class="flex-col hidden text-lg md:flex">
                  <div class="flex items-center gap-1">
                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-5 text-[#EDBB28]">
