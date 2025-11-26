@@ -42,7 +42,7 @@
                     <div
                         class="{{ Route::is('home') ? 'flex' : 'hidden' }} absolute inset-0 flex items-center justify-center mt-[25rem] z-30">
                         <x-button color="bg-gradient-to-b from-[#f6e887] to-[#feb101]" button="Browse Properties"
-                            route="home" />
+                            route="properties.all" />
                     </div>
                 </div>
             @endforeach

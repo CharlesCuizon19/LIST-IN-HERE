@@ -9,7 +9,8 @@
                 <span class="text-6xl font-bold text-white ">Let's Turn Your <span class="text-[#edbb28]">Property
                         Goals</span> into
                     Reality</span>
-                <x-button color="bg-gradient-to-b from-[#f6e887] to-[#feb101]" button="Contact Us Now" route="home" />
+                <x-button color="bg-gradient-to-b from-[#f6e887] to-[#feb101]" button="Contact Us Now"
+                    route="contact-us" />
             </div>
         </div>
         <div class="absolute -top-[7rem] w-full flex justify-center">

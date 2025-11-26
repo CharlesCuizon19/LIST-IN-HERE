@@ -119,7 +119,7 @@
                 <span class="text-black/50">
                     Choose Your Property Type and Start Exploring
                 </span>
-                <a href="#" class="flex items-center gap-2 group">
+                <a href="{{ route('properties.all') }}" class="flex items-center gap-2 group">
                     <span class="text-[#0a1a3a] font-semibold">View all {{ $listingCount }}
                         listings</span>
                     <div class="p-2 transition duration-300 bg-white rounded-full w-fit group-hover:translate-x-2">
@@ -161,7 +161,7 @@
                 <span class="text-black/50">
                     Discover the Newest Properties on the Market
                 </span>
-                <a href="#" class="flex items-center gap-2 group">
+                <a href="{{ route('properties.all') }}" class="flex items-center gap-2 group">
                     <span class="text-[#0a1a3a] font-semibold">View all {{ $listingCount }}
                         listings</span>
                     <div class="p-2 transition duration-300 bg-white rounded-full w-fit group-hover:translate-x-2">
@@ -240,7 +240,7 @@
                         that match their dreams, goals, and lifestyles. With honesty, dedication, and genuine care, we make
                         finding a home feel truly personal.
                     </span>
-                    <x-button textColor="white" color="bg-[#25464b]" route="home" button="More About Us" />
+                    <x-button textColor="white" color="bg-[#25464b]" route="about-us" button="More About Us" />
                 </div>
                 <div class="grid grid-cols-1 gap-5 xl:grid-cols-2">
                     <div class="relative flex flex-col gap-2 px-5 py-3 rounded-lg bg-[#f5f5f5] h-fit overflow-hidden">

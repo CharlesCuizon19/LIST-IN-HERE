@@ -3,7 +3,11 @@
      show = currentY < 50;
      lastY = currentY;
  });"
-     :class="show ? 'translate-y-0' : 'bg-[#25464B]/80 backdrop-blur-sm'"
+     :style="{
+         transform: show ? 'translateY(0px)' : 'translateY(-10px)',
+         backgroundColor: show ? 'transparent' : '#25464B',
+         boxShadow: show ? 'none' : '0 0px 10px rgba(0, 0, 0, 0.5)'
+     }"
      class="fixed top-0 left-0 z-50 w-full text-white transition-all duration-300 bg-transparent">
      <div class="container flex items-center justify-between py-3 mx-auto lg:py-4">
 
