@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div class="relative z-10 px-3 xl:px-0">
+    <div class="relative z-10 px-3 2xl:px-0">
         <div class="flex flex-col">
             <div class="container grid grid-cols-1 gap-10 py-10 mx-auto xl:grid-cols-5">
                 <div class="flex flex-col col-span-2 gap-5">

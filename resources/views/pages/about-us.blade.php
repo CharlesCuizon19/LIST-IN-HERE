@@ -67,16 +67,16 @@
                 <img src="{{ asset('images/aboutus-img2.png') }}" alt="" class="w-auto h-auto rounded-3xl">
             </div>
             <div class="flex flex-col gap-10 text-[#25464b] w-full">
-                <span class="mt-10 text-2xl font-medium leading-snug text-center xl:text-4xl xl:mt-0 xl:text-start">
+                <span class="mt-10 text-2xl font-medium leading-snug text-center xl:text-4xl xl:mt-0 2xl:text-start">
                     Commited to Making Property Ownership Simple and Reliable
                 </span>
-                <div class="grid grid-cols-1 gap-8 xl:grid-cols-3">
+                <div class="grid grid-cols-1 gap-8 2xl:grid-cols-3">
                     <div class="flex flex-col items-center justify-center col-span-1 gap-5 text-center">
                         <img src="{{ asset('images/best-award.png') }}" alt="" class="w-auto h-auto">
                         <span class="text-xl font-light"> Best Award </span>
                         <span class="font-medium text-nowrap">ACHIEVED 850+ CLIENTS</span>
                     </div>
-                    <div class="flex flex-col col-span-2 gap-7">
+                    <div class="flex flex-col col-span-2 px-3 text-center 2xl:text-start gap-7">
                         <div class="flex flex-col gap-2">
                             <span class="text-xl font-bold xl:text-3xl">Our Mission</span>
                             <span class="text-sm leading-relaxed xl:text-base">To deliver long term value and exceptional

@@ -5,7 +5,7 @@
     <div class="h-full bg-[#f5f5f5]">
         <x-banner />
 
-        <div class="xl:absolute z-30 flex w-full max-w-[1400px] bottom-5 justify-self-center px-3">
+        <div class="xl:absolute z-30 flex w-full max-w-[1400px] xl:-bottom-20 2xl:bottom-5 justify-self-center px-3">
             <div x-data="{
                 location: '',
                 typeOpen: false,
@@ -133,7 +133,7 @@
             <div class="flex flex-wrap gap-4">
                 @foreach ($uniqueListings as $item)
                     <a href="#"
-                        class="flex items-center w-full max-w-md gap-5 p-3 transition duration-300 bg-white md:max-w-xs xl:max-w-md rounded-xl hover:drop-shadow-md hover:border">
+                        class="flex items-center w-full max-w-md gap-5 p-3 transition duration-300 bg-white border border-transparent md:max-w-xs xl:max-w-lg 2xl:max-w-md rounded-xl hover:drop-shadow-md hover:border">
                         <div class="h-32 overflow-hidden rounded-md w-36">
                             <img src="{{ asset($item->category_cover) }}" alt=""
                                 class="object-cover w-full h-full">
@@ -223,7 +223,7 @@
 
         <div class="flex flex-col w-full gap-10 pt-20 bg-white pb-36">
             <div class="text-center text-[#25464b] text-3xl xl:text-5xl font-bold flex items-center justify-center">
-                <div class="w-auto xl:w-[35%] leading-snug">
+                <div class="w-auto xl:w-[70%] 2xl:w-[35%] leading-snug">
                     Building Trust Through <span class="text-[#edbb28]">Real Estate</span> Excellence
                 </div>
             </div>

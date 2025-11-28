@@ -9,7 +9,7 @@
         boxShadow: show ? 'none' : '0 0px 10px rgba(0, 0, 0, 0.5)'
     }"
     class="fixed top-0 left-0 z-50 w-full text-white transition-all duration-300 bg-transparent">
-    <div class="container flex justify-between py-3 mx-auto xl:items-center lg:py-4">
+    <div class="container flex justify-between py-3 mx-auto xl:items-center xl:px-3 lg:py-4">
 
         <!-- Left: Search Bar -->
         <div class="flex items-center space-x-2">
@@ -24,8 +24,8 @@
         </div>
 
         <!-- Center: Nav + Logo -->
-        <div class="flex items-start px-3 xl:items-center xl:px-0 xl:space-x-14">
-            <nav class="items-center hidden text-lg font-normal space-x-14 xl:flex">
+        <div class="flex items-start px-3 xl:items-center xl:px-0 xl:space-x-5 2xl:space-x-14">
+            <nav class="items-center hidden text-lg font-normal xl:space-x-5 2xl:space-x-14 xl:flex">
                 <a href="{{ route('home') }}"
                     class="{{ Route::is('home') ? 'text-[#EDBB28] font-medium' : 'text-white' }}">Home</a>
                 <a href="{{ route('about-us') }}"
@@ -38,7 +38,7 @@
                     class="object-contain w-full h-full rounded-full">
             </a>
 
-            <nav class="items-center hidden text-lg font-normal space-x-14 xl:flex">
+            <nav class="items-center hidden text-lg font-normal xl:space-x-5 2xl:space-x-14 xl:flex">
                 <a href="{{ route('properties.all') }}"
                     class="{{ Route::is('properties.*') ? 'text-[#EDBB28] font-medium' : 'text-white' }}">Property</a>
                 <a href="{{ route('contact-us') }}"

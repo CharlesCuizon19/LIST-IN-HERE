@@ -22,7 +22,7 @@
 
 <div class="p-2">
     <div
-        class="swiper {{ Route::is('home') ? 'myBannerSwiper h-[30rem] xl:h-[60rem]' : 'h-[22rem]' }}  relative  rounded-3xl">
+        class="swiper {{ Route::is('home') ? 'myBannerSwiper h-[30rem] xl:h-[55rem] 2xl:h-[60rem]' : 'h-[22rem]' }}  relative  rounded-3xl">
 
         <div class="h-full {{ Route::is('home') ? 'swiper-wrapper' : '' }}">
 
@@ -35,7 +35,7 @@
 
                     {{-- Centered Title --}}
                     <div
-                        class="absolute inset-0 z-20 w-full xl:w-auto leading-snug flex items-center justify-center font-bold text-white {{ Route::is('home') ? 'text-4xl xl:text-[96px]' : 'mt-36 text-6xl  xl:text-7xl' }} xl:mx-[30rem] text-center">
+                        class="absolute inset-0 z-20 w-full xl:w-auto leading-snug flex items-center justify-center font-bold text-white {{ Route::is('home') ? 'text-4xl xl:text-[96px]' : 'mt-36 text-6xl  xl:text-7xl' }} mx-[10rem] 2xl:mx-[30rem] text-center">
                         {{ Route::is('home') ? $item->title : $page }}
                     </div>
 
@@ -56,7 +56,7 @@
         </div>
 
         <div
-            class="{{ Route::is('home') ? 'flex' : 'hidden' }} absolute z-20 flex items-center justify-center w-full max-w-full px-20 top-[30rem] h-fit">
+            class="{{ Route::is('home') ? 'flex' : 'hidden' }} absolute z-20 flex items-center justify-center w-full max-w-full xl:px-10 2xl:px-20 top-[30rem] h-fit">
             <div class="flex justify-between w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                     class="text-white size-8 banner-button-prev">

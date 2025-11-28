@@ -13,7 +13,7 @@
                     Through a Message!
                 </span>
             </div>
-            <div class="grid justify-between grid-cols-1 space-y-10 xl:grid-cols-3">
+            <div class="grid items-center justify-between grid-cols-1 space-y-10 xl:grid-cols-3">
                 <div class="flex flex-col items-center gap-3">
                     <div class="rounded-full bg-[#edbb28] p-4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="text-white size-12">
