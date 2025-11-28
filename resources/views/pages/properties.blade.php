@@ -4,13 +4,13 @@
     <div class="bg-[#f5f5f5]">
         <x-banner pageBanner="images/properties-banner.png" page="List of Properties" />
 
-        <div class="container pt-20 mx-auto pb-36">
-            <div class="grid grid-cols-5 gap-5">
+        <div class="container px-3 pt-20 mx-auto pb-36">
+            <div class="grid grid-cols-1 gap-5 xl:grid-cols-5">
                 <div class="flex flex-col col-span-3 gap-5">
                     <div class="flex justify-between w-full">
                         <div>
                             <!-- SORTING - NOW FULLY WORKING -->
-                            <div x-data="sortDropdown()" class="relative inline-block text-lg">
+                            <div x-data="sortDropdown()" class="relative inline-block text-sm xl:text-lg">
                                 <div class="flex items-center gap-1 text-gray-400">
                                     <span>Sort by:</span>
                                     <button @click="open = !open"
@@ -46,7 +46,7 @@
                             </div>
                         </div>
 
-                        <div class="text-lg">
+                        <div class="text-sm xl:text-lg">
                             <span class="text-gray-400">Showing all <span
                                     class="text-[#515c72] font-semibold">{{ $listingCount }} listings</span></span>
                         </div>

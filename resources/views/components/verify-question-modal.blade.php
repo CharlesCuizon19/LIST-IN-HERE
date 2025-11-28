@@ -1,7 +1,7 @@
 <div x-data="{ open: false }">
 
     <button x-on:click="open = true"
-        class="px-6 py-3 text-lg font-normal text-gray-900 bg-gradient-to-b from-[#f6e887] to-[#feb101] rounded-md hover:bg-yellow-600">Inquire
+        class="px-6 py-3 xl:text-lg font-normal text-sm  text-gray-900 bg-gradient-to-b from-[#f6e887] to-[#feb101] rounded-md hover:bg-yellow-600">Inquire
         Now</button>
 
 

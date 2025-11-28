@@ -6,8 +6,8 @@
 ])
 
 <a href="{{ route($route) }}"
-    class=" flex items-center {{ $color }} text-{{ $textColor }} gap-2 w-fit px-7 py-5 rounded-md group hover:drop-shadow-lg transition duration-500">
-    <span class="text-lg">
+    class=" flex items-center {{ $color }} text-{{ $textColor }} gap-2 w-fit py-3 px-5 xl:px-7 xl:py-5 rounded-md group hover:drop-shadow-lg transition duration-500">
+    <span class="text-sm xl:text-lg">
         {{ $button }}
     </span>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

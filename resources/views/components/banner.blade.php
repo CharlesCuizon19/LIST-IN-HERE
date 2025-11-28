@@ -21,7 +21,8 @@
 ])
 
 <div class="p-2">
-    <div class="swiper {{ Route::is('home') ? 'myBannerSwiper h-[60rem]' : 'h-[22rem]' }}  relative  rounded-3xl">
+    <div
+        class="swiper {{ Route::is('home') ? 'myBannerSwiper h-[30rem] xl:h-[60rem]' : 'h-[22rem]' }}  relative  rounded-3xl">
 
         <div class="h-full {{ Route::is('home') ? 'swiper-wrapper' : '' }}">
 
@@ -34,7 +35,7 @@
 
                     {{-- Centered Title --}}
                     <div
-                        class="absolute inset-0 z-20 flex items-center justify-center font-bold text-white {{ Route::is('home') ? 'text-[96px]' : 'mt-36 text-7xl' }} mx-[30rem] text-center">
+                        class="absolute inset-0 z-20 w-full xl:w-auto leading-snug flex items-center justify-center font-bold text-white {{ Route::is('home') ? 'text-4xl xl:text-[96px]' : 'mt-36 text-6xl  xl:text-7xl' }} xl:mx-[30rem] text-center">
                         {{ Route::is('home') ? $item->title : $page }}
                     </div>
 

@@ -5,7 +5,7 @@
     <div class="h-full bg-[#f5f5f5]">
         <x-banner />
 
-        <div class="absolute z-30 flex w-full max-w-[1400px] bottom-5 justify-self-center">
+        <div class="xl:absolute z-30 flex w-full max-w-[1400px] bottom-5 justify-self-center px-3">
             <div x-data="{
                 location: '',
                 typeOpen: false,
@@ -13,12 +13,12 @@
                 selectedType: 'Select listing type',
                 selectedCategory: 'Select listing category'
             }"
-                class="flex items-center w-full justify-between p-8 bg-white shadow-md rounded-2xl !text-[#25464B]">
+                class="flex flex-col xl:flex-row items-center w-full gap-5 xl:gap-0 justify-between p-8 bg-white shadow-md rounded-2xl !text-[#25464B]">
 
-                <div class="flex items-center gap-4">
+                <div class="grid items-center grid-cols-1 gap-4 xl:grid-cols-3">
                     <!-- SEARCH LOCATION -->
                     <div class="flex items-center w-full gap-3 py-3 pl-5 pr-20 border rounded-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="size-7">
                             <path fill="currentColor"
                                 d="M8 1a6 6 0 0 1 6 6c0 2.874-3.097 6.016-4.84 7.558c-.67.59-1.65.59-2.32 0C5.098 13.016 2 9.874 2 7a6 6 0 0 1 6-6m0 1a5 5 0 0 0-5 5c0 1.108.614 2.395 1.57 3.683c.933 1.258 2.087 2.377 2.934 3.126c.29.256.702.256.992 0c.847-.749 2-1.867 2.935-3.126C12.386 9.395 13 8.108 13 7a5 5 0 0 0-5-5m0 2.75a2.25 2.25 0 1 1 0 4.5a2.25 2.25 0 0 1 0-4.5m0 1a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 0 0 0-2.5" />
                         </svg>
@@ -111,11 +111,11 @@
         </div>
 
         {{-- Listing Category --}}
-        <div class="container flex flex-col gap-10 py-20 mx-auto">
-            <div class="text-6xl text-[#25464b] font-bold">
+        <div class="container flex flex-col gap-10 px-3 py-20 mx-auto">
+            <div class="text-3xl xl:text-6xl text-[#25464b] font-bold">
                 Listing Category
             </div>
-            <div class="flex items-center gap-2 text-lg">
+            <div class="flex flex-col items-center gap-2 text-sm xl:text-lg md:flex-row">
                 <span class="text-black/50">
                     Choose Your Property Type and Start Exploring
                 </span>
@@ -133,17 +133,17 @@
             <div class="flex flex-wrap gap-4">
                 @foreach ($uniqueListings as $item)
                     <a href="#"
-                        class="flex items-center w-full max-w-md gap-5 p-3 transition duration-300 bg-white rounded-xl hover:drop-shadow-md hover:border">
+                        class="flex items-center w-full max-w-md gap-5 p-3 transition duration-300 bg-white md:max-w-xs xl:max-w-md rounded-xl hover:drop-shadow-md hover:border">
                         <div class="h-32 overflow-hidden rounded-md w-36">
                             <img src="{{ asset($item->category_cover) }}" alt=""
                                 class="object-cover w-full h-full">
                         </div>
 
                         <div class="flex flex-col gap-3">
-                            <span class="text-[#25464b] text-2xl font-bold">{{ $item->category }}</span>
+                            <span class="text-[#25464b] text-lg xl:text-2xl font-bold">{{ $item->category }}</span>
 
                             {{-- Show count for THIS specific category only --}}
-                            <div class="text-lg text-[#edbb28] font-medium">
+                            <div class="text-sm xl:text-lg text-[#edbb28] font-medium">
                                 {{ $categoryCounts[$item->category] ?? 0 }} Listing(s)
                             </div>
                         </div>
@@ -153,11 +153,11 @@
         </div>
 
         {{-- Latest Category --}}
-        <div class="container flex flex-col gap-10 py-20 mx-auto">
-            <div class="text-6xl text-[#25464b] font-bold">
+        <div class="container flex flex-col gap-10 px-3 py-20 mx-auto">
+            <div class="text-3xl xl:text-6xl text-[#25464b] font-bold">
                 Latest Listings
             </div>
-            <div class="flex items-center gap-2 text-lg">
+            <div class="flex flex-col items-center gap-2 text-sm md:flex-row xl:text-lg">
                 <span class="text-black/50">
                     Discover the Newest Properties on the Market
                 </span>
@@ -223,19 +223,19 @@
 
         <div class="flex flex-col w-full gap-10 pt-20 bg-white pb-36">
             <div class="text-center text-[#25464b] text-3xl xl:text-5xl font-bold flex items-center justify-center">
-                <div class="w-[35%] leading-snug">
+                <div class="w-auto xl:w-[35%] leading-snug">
                     Building Trust Through <span class="text-[#edbb28]">Real Estate</span> Excellence
                 </div>
             </div>
             <div class="p-3">
                 <img src="{{ asset('images/rectangle-img.png') }}" alt="" class="w-full h-auto">
             </div>
-            <div class="container grid grid-cols-1 gap-20 mx-auto xl:grid-cols-2">
+            <div class="container grid grid-cols-1 gap-20 px-3 mx-auto xl:grid-cols-2">
                 <div class="flex flex-col gap-4 text-[#25464b]">
-                    <span class="text-3xl font-bold">
+                    <span class="text-2xl font-bold xl:text-3xl">
                         Get to Know ListInHere
                     </span>
-                    <span class="text-lg">
+                    <span class="text-sm xl:text-lg">
                         At ListInHere, we believe every home tells a story. Our mission is to connect people with properties
                         that match their dreams, goals, and lifestyles. With honesty, dedication, and genuine care, we make
                         finding a home feel truly personal.
@@ -244,37 +244,37 @@
                 </div>
                 <div class="grid grid-cols-1 gap-5 xl:grid-cols-2">
                     <div class="relative flex flex-col gap-2 px-5 py-3 rounded-lg bg-[#f5f5f5] h-fit overflow-hidden">
-                        <div class="text-5xl text-[#25464b] font-bold">
+                        <div class="text-3xl xl:text-5xl text-[#25464b] font-bold">
                             1,200+
                         </div>
-                        <div class="text-lg font-medium text-[#eebf35]">
+                        <div class="text-sm xl:text-lg font-medium text-[#eebf35]">
                             Properties Sold
                         </div>
                         <img src="{{ asset('images/key.png') }}" alt="" class="absolute right-0 -bottom-4">
                     </div>
                     <div class="relative flex flex-col gap-2 px-5 py-3 rounded-lg bg-[#f5f5f5] h-fit overflow-hidden">
-                        <div class="text-5xl text-[#25464b] font-bold">
+                        <div class="text-3xl xl:text-5xl text-[#25464b] font-bold">
                             850+
                         </div>
-                        <div class="text-lg font-medium text-[#eebf35]">
+                        <div class="text-sm xl:text-lg font-medium text-[#eebf35]">
                             Satisfies Clients
                         </div>
                         <img src="{{ asset('images/clients.png') }}" alt="" class="absolute right-0 -bottom-4">
                     </div>
                     <div class="relative flex flex-col gap-2 px-5 py-3 rounded-lg bg-[#f5f5f5] h-fit overflow-hidden">
-                        <div class="text-5xl text-[#25464b] font-bold">
+                        <div class="text-3xl xl:text-5xl text-[#25464b] font-bold">
                             2,000+
                         </div>
-                        <div class="text-lg font-medium text-[#eebf35]">
+                        <div class="text-sm xl:text-lg font-medium text-[#eebf35]">
                             Active Listings
                         </div>
                         <img src="{{ asset('images/house.png') }}" alt="" class="absolute right-0 -bottom-4">
                     </div>
                     <div class="relative flex flex-col gap-2 px-5 py-3 rounded-lg bg-[#f5f5f5] h-fit overflow-hidden">
-                        <div class="text-5xl text-[#25464b] font-bold">
+                        <div class="text-3xl xl:text-5xl text-[#25464b] font-bold">
                             10+
                         </div>
-                        <div class="text-lg font-medium text-[#eebf35]">
+                        <div class="text-sm xl:text-lg font-medium text-[#eebf35]">
                             Years of Experience
                         </div>
                         <img src="{{ asset('images/check.png') }}" alt="" class="absolute right-0 -bottom-4">

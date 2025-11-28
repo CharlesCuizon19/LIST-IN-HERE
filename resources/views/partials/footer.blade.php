@@ -1,12 +1,14 @@
 <footer class="bg-[#f5f5f5]">
-    <div class="relative {{ Route::is('contact-us') ? 'hidden' : 'flex' }}">
+    <div
+        class="relative h-[70vh] md:h-[40vh] xl:h-auto bg-[#2b4c51] xl:bg-transparent {{ Route::is('contact-us') ? 'hidden' : 'flex' }}">
         <div class="p-3 overflow-hidden rounded-2xl">
             <img src="{{ asset('images/footer-rectangle.png') }}" alt=""
-                class="object-cover w-full h-full rounded-lg">
+                class="hidden object-cover w-full h-full rounded-lg xl:flex">
         </div>
-        <div class="absolute top-[40%]">
-            <div class="w-[70%] leading-snug mx-auto space-y-6">
-                <span class="text-6xl font-bold text-white ">Let's Turn Your <span class="text-[#edbb28]">Property
+        <div class="absolute top-[60%] xl:top-[40%]">
+            <div class="xl:w-[70%] leading-snug mx-auto space-y-6 px-3">
+                <span class="text-3xl font-bold text-white xl:text-6xl ">Let's Turn Your <span
+                        class="text-[#edbb28]">Property
                         Goals</span> into
                     Reality</span>
                 <x-button color="bg-gradient-to-b from-[#f6e887] to-[#feb101]" button="Contact Us Now"
@@ -15,7 +17,7 @@
         </div>
         <div class="absolute -top-[7rem] w-full flex justify-center">
             <div class="flex flex-col w-[90%] gap-10 text-center bg-white border rounded-lg py-8">
-                <span class="text-[#25464b] text-3xl font-bold">Our Trusted Partners</span>
+                <span class="text-[#25464b] text-2xl xl:text-3xl font-bold">Our Trusted Partners</span>
                 <div class="flex flex-wrap items-center gap-5 justify-evenly">
                     <img src="{{ asset('images/partner1.png') }}" alt="" class="w-auto h-12">
                     <img src="{{ asset('images/partner2.png') }}" alt="">
@@ -27,17 +29,17 @@
             </div>
         </div>
     </div>
-    <div class="relative z-10 ">
+    <div class="relative z-10 px-3 xl:px-0">
         <div class="flex flex-col">
             <div class="container grid grid-cols-1 gap-10 py-10 mx-auto xl:grid-cols-5">
                 <div class="flex flex-col col-span-2 gap-5">
                     <img src="{{ asset('images/logo.png') }}" alt="" class="h-auto w-28">
-                    <span class="text-[#0A1A3A] text-lg leading-relaxed">
+                    <span class="text-[#0A1A3A] text-sm xl:text-lg leading-relaxed">
                         ListInHere is your trusted real estate partner, connecting buyers, sellers, and investors to the
                         best properties with ease and confidence.
                     </span>
                     <div class="flex items-center gap-3">
-                        <span class="text-[#25464b] font-medium text-lg">Follow Our Socials: </span>
+                        <span class="text-[#25464b] font-medium text-sm xl:text-lg">Follow Our Socials: </span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                             class="text-[#edbb28] hover:scale-125 transition duration-300">
                             <path fill="currentColor"
@@ -58,7 +60,7 @@
                 </div>
                 <div class="flex flex-wrap col-span-3 gap-x-[10rem] gap-y-10">
                     <div class="flex flex-col gap-5 w-fit">
-                        <span class="text-2xl font-bold text-[#25464b]">Quick Links</span>
+                        <span class="text-lg xl:text-2xl font-bold text-[#25464b]">Quick Links</span>
                         <a href="{{ route('home') }}"
                             class="flex items-center gap-2 {{ Route::is('home') ? 'text-[#25464b] font-medium' : 'text-black/70' }} group">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -66,7 +68,7 @@
                                 <path fill="currentColor"
                                     d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z" />
                             </svg>
-                            <span class="text-lg">Home</span>
+                            <span class="text-sm xl:text-lg">Home</span>
                         </a>
                         <a href="{{ route('about-us') }}"
                             class="flex items-center gap-2 {{ Route::is('about-us') ? 'text-[#25464b] font-medium' : 'text-black/70' }} group">
@@ -75,7 +77,7 @@
                                 <path fill="currentColor"
                                     d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z" />
                             </svg>
-                            <span class="text-lg">About Us</span>
+                            <span class="text-sm xl:text-lg">About Us</span>
                         </a>
                         <a href="{{ route('properties.all') }}"
                             class="flex items-center gap-2 {{ Route::is('properties.*') ? 'text-[#25464b] font-medium' : 'text-black/70' }} group">
@@ -84,7 +86,7 @@
                                 <path fill="currentColor"
                                     d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z" />
                             </svg>
-                            <span class="text-lg">Property</span>
+                            <span class="text-sm xl:text-lg">Property</span>
                         </a>
                         <a href="{{ route('contact-us') }}"
                             class="flex items-center gap-2 {{ Route::is('contact-us') ? 'text-[#25464b] font-medium' : 'text-black/70' }} group">
@@ -93,30 +95,31 @@
                                 <path fill="currentColor"
                                     d="M18 7.05a1 1 0 0 0-1-1L9 6a1 1 0 0 0 0 2h5.56l-8.27 8.29a1 1 0 0 0 0 1.42a1 1 0 0 0 1.42 0L16 9.42V15a1 1 0 0 0 1 1a1 1 0 0 0 1-1Z" />
                             </svg>
-                            <span class="text-lg">Contact Us</span>
+                            <span class="text-sm xl:text-lg">Contact Us</span>
                         </a>
                     </div>
-                    <div class="flex flex-col gap-5 w-[60%]">
-                        <span class="font-bold text-3xl text-[#25464b]">Stay Updated!</span>
-                        <span class="text-[#0a1a3a] text-lg leading-relaxed ">Get the newest listings, market
+                    <div class="flex flex-col gap-5 xl:w-[60%]">
+                        <span class="font-bold text-xl xl:text-3xl text-[#25464b]">Stay Updated!</span>
+                        <span class="text-[#0a1a3a] text-sm xl:text-lg leading-relaxed ">Get the newest listings, market
                             insights, and
                             real estate tips delivered straight to your inbox.</span>
                         <div class="flex justify-between p-3 bg-white border rounded-lg">
                             <input type="email" placeholder="Enter your email address"
                                 class="w-full px-3 outline-none">
                             <button
-                                class="px-6 py-3 text-lg w-fit font-normal text-gray-900 bg-gradient-to-b from-[#f6e887] to-[#feb101] rounded-md hover:bg-yellow-600">Subsribe</button>
+                                class="px-6 py-3 text-sm xl:text-lg w-fit font-normal text-gray-900 bg-gradient-to-b from-[#f6e887] to-[#feb101] rounded-md hover:bg-yellow-600">Subsribe</button>
                         </div>
                     </div>
                     <div class="flex flex-col gap-5">
-                        <span class="text-2xl font-bold text-[#25464b]">Get in Touch</span>
+                        <span class="text-lg xl:text-2xl font-bold text-[#25464b]">Get in Touch</span>
                         <div class="flex items-center gap-3">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"
                                 class="text-[#edbb28] size-6">
                                 <path fill="currentColor"
                                     d="M6 .5A4.5 4.5 0 0 1 10.5 5c0 1.863-1.42 3.815-4.2 5.9a.5.5 0 0 1-.6 0C2.92 8.815 1.5 6.863 1.5 5A4.5 4.5 0 0 1 6 .5m0 3a1.5 1.5 0 1 0 0 3a1.5 1.5 0 0 0 0-3" />
                             </svg>
-                            <span class="text-lg text-black/70">B13L10 Jasmine Heather St. Lavistamonte 2 Subd. Matina
+                            <span class="text-sm xl:text-lg text-black/70">B13L10 Jasmine Heather St. Lavistamonte 2
+                                Subd. Matina
                                 Balusong,
                                 Davao City</span>
                         </div>
@@ -126,7 +129,7 @@
                                 <path fill="currentColor"
                                     d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24c1.12.37 2.33.57 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1c-9.39 0-17-7.61-17-17c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1c0 1.25.2 2.45.57 3.57c.11.35.03.74-.25 1.02z" />
                             </svg>
-                            <span class="text-lg text-black/70">0912 345 6789</span>
+                            <span class="text-sm xl:text-lg text-black/70">0912 345 6789</span>
                         </div>
                         <div class="flex items-center gap-3">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -134,13 +137,14 @@
                                 <path fill="currentColor"
                                     d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m0 4l-8 5l-8-5V6l8 5l8-5z" />
                             </svg>
-                            <span class="text-lg text-black/70">listinhere@gmail.com</span>
+                            <span class="text-sm xl:text-lg text-black/70">listinhere@gmail.com</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="container flex flex-wrap justify-between w-full mx-auto border-t border-black py-7 ">
-                <span class="">© ListIn Here 2025. Designed and Developed by <a
+            <div
+                class="container flex flex-wrap items-center justify-center w-full mx-auto border-t border-black xl:justify-between py-7 ">
+                <span class="text-center">© ListIn Here 2025. Designed and Developed by <a
                         href="https://rwebsolutions.com.ph/" class="text-orange-500">R Web Solutions Corp.</a></span>
                 <img src="{{ asset('images/logo.png') }}" alt="" class="w-auto h-14">
                 <div class="flex items-center gap-5 ">
