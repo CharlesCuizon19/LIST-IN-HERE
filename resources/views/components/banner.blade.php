@@ -34,8 +34,8 @@
                         class="object-cover w-full h-full">
 
                     {{-- Centered Title --}}
-                    <div
-                        class="absolute inset-0 z-20 w-full xl:w-auto leading-snug flex items-center justify-center font-bold text-white {{ Route::is('home') ? 'text-4xl xl:text-[96px]' : 'mt-36 text-6xl  xl:text-7xl' }} px-[10rem] 2xl:px-[30rem] text-center">
+                    <div class="absolute inset-0 z-20 w-full xl:w-auto leading-snug flex items-center justify-center font-bold text-white {{ Route::is('home') ? 'text-4xl xl:text-[96px]' : 'mt-36 text-6xl  xl:text-7xl' }} px-[10rem] 2xl:px-[30rem] text-center"
+                        data-aos="fade-zoom-in" data-aos-easing="ease-in" data-aos-delay="300" data-aos-offset="0">
                         {{ Route::is('home') ? $item->title : $page }}
                     </div>
 

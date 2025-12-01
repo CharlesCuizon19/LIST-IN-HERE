@@ -6,7 +6,7 @@
 
         <div class="container px-3 pt-20 mx-auto pb-36">
             <div class="grid grid-cols-1 gap-5 xl:grid-cols-5">
-                <div class="flex flex-col col-span-3 gap-5">
+                <div class="flex flex-col col-span-3 gap-5" data-aos="fade-right">
                     <div class="flex justify-between w-full">
                         <div>
                             <!-- SORTING - NOW FULLY WORKING -->
@@ -135,7 +135,7 @@
                     </div>
 
                 </div>
-                <div class="col-span-2">
+                <div class="col-span-2" data-aos="fade-left">
                     <form method="GET" action="{{ request()->url() }}" id="filter-form">
                         <input type="hidden" name="sort" id="sort-input" value="{{ request('sort', 'latest') }}">
                         <div class="w-full p-8 bg-white border border-gray-100 shadow-sm rounded-3xl">
@@ -310,6 +310,10 @@
                             and
                             <a href="#" class="font-semibold text-orange-600">[Privacy Policy]</a>.
                         </p>
+
+                        <div class="mt-4">
+                            <div class="g-recaptcha" data-sitekey="RECAPTCHA_SITEKEY"></div>
+                        </div>
 
                         <!-- Buttons -->
                         <div class="flex gap-4 pt-2">

@@ -5,7 +5,7 @@
         <x-banner pageBanner="images/contactus-banner.png" page="Contact Us" />
 
         <div class="text-[#25464b] container flex flex-col gap-20 pt-20 mx-auto text-center px-3">
-            <div class="flex flex-col gap-3 text-xl font-medium xl:text-5xl">
+            <div class="flex flex-col gap-3 text-xl font-medium xl:text-5xl" data-aos="fade-up">
                 <span class="">
                     Have Questions? Don't Hesitate to Contact Us
                 </span>
@@ -14,7 +14,7 @@
                 </span>
             </div>
             <div class="grid items-center justify-between grid-cols-1 space-y-10 xl:grid-cols-3">
-                <div class="flex flex-col items-center gap-3">
+                <div class="flex flex-col items-center gap-3" data-aos="fade-up" data-aos-delay="200">
                     <div class="rounded-full bg-[#edbb28] p-4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="text-white size-12">
                             <path fill="currentColor"
@@ -24,7 +24,7 @@
                     <span class="text-lg font-bold xl:text-2xl">Phone Number</span>
                     <span class="text-sm xl:text-xl text-black/70">0912 345 6789</span>
                 </div>
-                <div class="flex flex-col items-center gap-3">
+                <div class="flex flex-col items-center gap-3" data-aos="fade-up" data-aos-delay="400">
                     <div class="rounded-full bg-[#edbb28] p-4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" class="text-white size-12">
                             <path fill="currentColor"
@@ -36,7 +36,7 @@
                         Balusong,
                         Davao City</span>
                 </div>
-                <div class="flex flex-col items-center gap-3">
+                <div class="flex flex-col items-center gap-3" data-aos="fade-up" data-aos-delay="600">
                     <div class="rounded-full bg-[#edbb28] p-4">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="text-white size-12">
                             <path fill="currentColor"

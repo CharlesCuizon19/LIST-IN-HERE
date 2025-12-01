@@ -2,10 +2,11 @@
 
 
 @section('content')
-    <div class="h-full bg-[#f5f5f5]">
+    <div class="h-full bg-[#f5f5f5] overflow-x-hidden">
         <div class="relative">
             <x-banner />
-            <div class="2xl:absolute z-30 flex w-full max-w-[1400px] xl:-bottom-20 2xl:bottom-5 justify-self-center px-3">
+            <div class="2xl:absolute z-30 flex w-full max-w-[1400px] xl:-bottom-20 2xl:bottom-5 justify-self-center px-3"
+                data-aos="fade-up" data-aos-duration="1000">
                 <div x-data="{
                     location: '',
                     typeOpen: false,
@@ -116,7 +117,7 @@
 
 
         {{-- Listing Category --}}
-        <div class="container flex flex-col gap-10 px-3 py-20 mx-auto">
+        <div class="container flex flex-col gap-10 px-3 py-20 mx-auto" data-aos="fade-up">
             <div class="text-3xl xl:text-6xl text-[#25464b] font-bold">
                 Listing Category
             </div>
@@ -158,7 +159,7 @@
         </div>
 
         {{-- Latest Category --}}
-        <div class="container flex flex-col gap-10 px-3 py-20 mx-auto">
+        <div class="container flex flex-col gap-10 px-3 py-20 mx-auto" data-aos="fade-up">
             <div class="text-3xl xl:text-6xl text-[#25464b] font-bold">
                 Latest Listings
             </div>
@@ -228,15 +229,15 @@
 
         <div class="flex flex-col w-full gap-10 pt-20 bg-white pb-36">
             <div class="text-center text-[#25464b] text-3xl xl:text-5xl font-bold flex items-center justify-center">
-                <div class="w-auto xl:w-[70%] 2xl:w-[35%] leading-snug">
+                <div class="w-auto xl:w-[70%] 2xl:w-[35%] leading-snug" data-aos="fade-up">
                     Building Trust Through <span class="text-[#edbb28]">Real Estate</span> Excellence
                 </div>
             </div>
-            <div class="p-3">
+            <div class="p-3" data-aos="zoom-out">
                 <img src="{{ asset('images/rectangle-img.png') }}" alt="" class="w-full h-auto">
             </div>
             <div class="container grid grid-cols-1 gap-20 px-3 mx-auto xl:grid-cols-2">
-                <div class="flex flex-col gap-4 text-[#25464b]">
+                <div class="flex flex-col gap-4 text-[#25464b]" data-aos="fade-right">
                     <span class="text-2xl font-bold xl:text-3xl">
                         Get to Know ListInHere
                     </span>
@@ -247,7 +248,7 @@
                     </span>
                     <x-button textColor="white" color="bg-[#25464b]" route="about-us" button="More About Us" />
                 </div>
-                <div class="grid grid-cols-1 gap-5 xl:grid-cols-2">
+                <div class="grid grid-cols-1 gap-5 xl:grid-cols-2" data-aos="fade-left">
                     <div class="relative flex flex-col gap-2 px-5 py-3 rounded-lg bg-[#f5f5f5] h-fit overflow-hidden">
                         <div class="text-3xl xl:text-5xl text-[#25464b] font-bold">
                             1,200+

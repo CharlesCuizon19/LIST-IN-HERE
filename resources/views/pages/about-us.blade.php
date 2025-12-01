@@ -5,7 +5,7 @@
         <x-banner pageBanner="images/aboutus-banner.png" page="About Us" />
 
         <div class="container grid grid-cols-1 gap-20 px-3 py-20 mx-auto xl:grid-cols-2">
-            <div class="flex flex-col gap-7">
+            <div class="flex flex-col gap-7" data-aos="fade-right">
                 <span class="text-[#2c6471] text-2xl xl:text-4xl font-bold">Your Trusted Partner in Real Estate</span>
                 <span class="text-[#575757] text-sm xl:text-base leading-relaxed">
                     At ListIn Here, we make property searching simple, transparent, and reliable. Our mission is to connect
@@ -57,16 +57,16 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-center">
+            <div class="flex items-center justify-center" data-aos="fade-left">
                 <img src="{{ asset('images/aboutus-img1.png') }}" alt="" class="w-auto h-auto">
             </div>
         </div>
 
         <div class="grid items-center grid-cols-1 px-3 py-20 bg-white xl:grid-cols-3">
-            <div class="flex items-center justify-center w-full">
+            <div class="flex items-center justify-center w-full" data-aos="fade-up" data-aos-delay="300">
                 <img src="{{ asset('images/aboutus-img2.png') }}" alt="" class="w-auto h-auto rounded-3xl">
             </div>
-            <div class="flex flex-col gap-10 text-[#25464b] w-full">
+            <div class="flex flex-col gap-10 text-[#25464b] w-full" data-aos="fade-up" data-aos-delay="500">
                 <span class="mt-10 text-2xl font-medium leading-snug text-center xl:text-4xl xl:mt-0 2xl:text-start">
                     Commited to Making Property Ownership Simple and Reliable
                 </span>
@@ -92,15 +92,15 @@
                     </div>
                 </div>
             </div>
-            <div class="flex items-center justify-center w-full mt-10 xl:mt-0">
+            <div class="flex items-center justify-center w-full mt-10 xl:mt-0" data-aos="fade-up" data-aos-delay="800">
                 <img src="{{ asset('images/aboutus-img3.png') }}" alt="" class="w-[30rem] h-auto rounded-3xl">
             </div>
         </div>
 
         <div class="container py-20 mx-auto">
             <div class="grid grid-cols-1 gap-10 px-3 xl:grid-cols-2">
-                <div
-                    class="flex text-[#25464b] flex-col gap-5 items-center xl:self-start justify-center w-auto xl:sticky lg:top-[10rem] lg:items-start lg:justify-start lg:w-full lg:h-fit">
+                <div class="flex text-[#25464b] flex-col gap-5 items-center xl:self-start justify-center w-auto xl:sticky lg:top-[10rem] lg:items-start lg:justify-start lg:w-full lg:h-fit"
+                    data-aos="fade-right">
                     <span class="w-full text-2xl font-bold text-center xl:text-start xl:text-4xl">
                         Our Core Values
                     </span>
@@ -111,7 +111,7 @@
                         continuously create meaningful real estate experiences and lasting trust with every transaction.
                     </span>
                 </div>
-                <div class="grid grid-cols-1 text-[#25464b] lg:grid-cols-2 gap-5">
+                <div class="grid grid-cols-1 text-[#25464b] lg:grid-cols-2 gap-5" data-aos="fade-left">
                     <div class="flex flex-col items-center justify-center gap-4 p-5 text-center bg-white rounded-xl">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="text-[#edbb28] size-12">
                             <g fill="none">
