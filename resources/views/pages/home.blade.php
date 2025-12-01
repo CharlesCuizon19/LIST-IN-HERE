@@ -3,112 +3,117 @@
 
 @section('content')
     <div class="h-full bg-[#f5f5f5]">
-        <x-banner />
+        <div class="relative">
+            <x-banner />
+            <div class="2xl:absolute z-30 flex w-full max-w-[1400px] xl:-bottom-20 2xl:bottom-5 justify-self-center px-3">
+                <div x-data="{
+                    location: '',
+                    typeOpen: false,
+                    categoryOpen: false,
+                    selectedType: 'Select listing type',
+                    selectedCategory: 'Select listing category'
+                }"
+                    class="flex flex-col xl:flex-row items-center w-full gap-5 xl:gap-0 justify-between p-8 bg-white shadow-md rounded-2xl !text-[#25464B]">
 
-        <div class="xl:absolute z-30 flex w-full max-w-[1400px] xl:-bottom-20 2xl:bottom-5 justify-self-center px-3">
-            <div x-data="{
-                location: '',
-                typeOpen: false,
-                categoryOpen: false,
-                selectedType: 'Select listing type',
-                selectedCategory: 'Select listing category'
-            }"
-                class="flex flex-col xl:flex-row items-center w-full gap-5 xl:gap-0 justify-between p-8 bg-white shadow-md rounded-2xl !text-[#25464B]">
+                    <div class="grid items-center grid-cols-1 gap-4 xl:grid-cols-3">
+                        <!-- SEARCH LOCATION -->
+                        <div class="flex items-center w-full gap-3 py-3 pl-5 pr-20 border rounded-xl">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="size-7">
+                                <path fill="currentColor"
+                                    d="M8 1a6 6 0 0 1 6 6c0 2.874-3.097 6.016-4.84 7.558c-.67.59-1.65.59-2.32 0C5.098 13.016 2 9.874 2 7a6 6 0 0 1 6-6m0 1a5 5 0 0 0-5 5c0 1.108.614 2.395 1.57 3.683c.933 1.258 2.087 2.377 2.934 3.126c.29.256.702.256.992 0c.847-.749 2-1.867 2.935-3.126C12.386 9.395 13 8.108 13 7a5 5 0 0 0-5-5m0 2.75a2.25 2.25 0 1 1 0 4.5a2.25 2.25 0 0 1 0-4.5m0 1a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 0 0 0-2.5" />
+                            </svg>
+                            <input type="text" placeholder="Search location"
+                                class="w-full outline-none placeholder:text-[#25464b]" x-model="location">
+                        </div>
 
-                <div class="grid items-center grid-cols-1 gap-4 xl:grid-cols-3">
-                    <!-- SEARCH LOCATION -->
-                    <div class="flex items-center w-full gap-3 py-3 pl-5 pr-20 border rounded-xl">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="size-7">
-                            <path fill="currentColor"
-                                d="M8 1a6 6 0 0 1 6 6c0 2.874-3.097 6.016-4.84 7.558c-.67.59-1.65.59-2.32 0C5.098 13.016 2 9.874 2 7a6 6 0 0 1 6-6m0 1a5 5 0 0 0-5 5c0 1.108.614 2.395 1.57 3.683c.933 1.258 2.087 2.377 2.934 3.126c.29.256.702.256.992 0c.847-.749 2-1.867 2.935-3.126C12.386 9.395 13 8.108 13 7a5 5 0 0 0-5-5m0 2.75a2.25 2.25 0 1 1 0 4.5a2.25 2.25 0 0 1 0-4.5m0 1a1.25 1.25 0 1 0 0 2.5a1.25 1.25 0 0 0 0-2.5" />
+                        <!-- LISTING TYPE DROPDOWN -->
+                        <div class="relative w-full">
+                            <button @click="typeOpen = !typeOpen"
+                                class="flex items-center justify-between w-full px-5 py-3 border rounded-xl">
+                                <div class="flex items-center gap-3 pr-20 text-nowrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-5">
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="32"
+                                            d="M403.29 32H280.36a14.46 14.46 0 0 0-10.2 4.2L24.4 281.9a28.85 28.85 0 0 0 0 40.7l117 117a28.86 28.86 0 0 0 40.71 0L427.8 194a14.46 14.46 0 0 0 4.2-10.2v-123A28.66 28.66 0 0 0 403.29 32" />
+                                        <path fill="currentColor" d="M352 144a32 32 0 1 1 32-32a32 32 0 0 1-32 32" />
+                                        <path fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="32"
+                                            d="m230 480l262-262a13.8 13.8 0 0 0 4-10V80" />
+                                    </svg>
+                                    <span x-text="selectedType"></span>
+                                </div>
+
+                                <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+
+                            <!-- OPTIONS -->
+                            <div x-show="typeOpen" @click.away="typeOpen = false"
+                                class="absolute z-20 w-full mt-2 bg-white shadow-lg rounded-xl">
+                                <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
+                                    @click="selectedType = 'For Sale'; typeOpen = false">For Sale</div>
+                                <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
+                                    @click="selectedType = 'For Rent'; typeOpen = false">For Rent</div>
+                                <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
+                                    @click="selectedType = 'Pre-Selling'; typeOpen = false">Pre-Selling</div>
+                            </div>
+                        </div>
+
+                        <!-- LISTING CATEGORY DROPDOWN -->
+                        <div class="relative w-full">
+                            <button @click="categoryOpen = !categoryOpen"
+                                class="flex items-center justify-between w-full px-5 py-3 border rounded-xl">
+                                <div class="flex items-center gap-3 pr-20 text-nowrap">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                        viewBox="0 0 24 24">
+                                        <g fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="1">
+                                            <path stroke-width="1.5" d="M4 5v14h16V3" />
+                                            <path stroke-width="1.5"
+                                                d="M14 19v-5.463c0-2.143-4-1.953-4 0V19m4 3h-4M3 5l7.735-2.74c1.254-.347 1.276-.347 2.53 0L21 5" />
+                                            <path stroke-width="2" d="M12.012 8H12" />
+                                        </g>
+                                    </svg>
+                                    <span x-text="selectedCategory"></span>
+                                </div>
+
+                                <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+
+                            <!-- OPTIONS -->
+                            <div x-show="categoryOpen" @click.away="categoryOpen = false"
+                                class="absolute z-20 w-full mt-2 bg-white shadow-lg rounded-xl">
+                                <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
+                                    @click="selectedCategory = 'Condominium'; categoryOpen = false">Condominium</div>
+                                <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
+                                    @click="selectedCategory = 'House & Lot'; categoryOpen = false">House & Lot</div>
+                                <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
+                                    @click="selectedCategory = 'Commercial'; categoryOpen = false">Commercial</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BUTTON -->
+                    <button
+                        class="bg-[#25464b] hover:bg-[#0c2627] text-white rounded-lg px-5 py-4 flex items-center gap-2 text-nowrap">
+                        Find Property
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-6">
+                            <path fill="currentColor" fill-rule="evenodd"
+                                d="m16.31 15.561l4.114 4.115l-.848.848l-4.123-4.123a7 7 0 1 1 .857-.84M16.8 11a5.8 5.8 0 1 0-11.6 0a5.8 5.8 0 0 0 11.6 0" />
                         </svg>
-                        <input type="text" placeholder="Search location"
-                            class="w-full outline-none placeholder:text-[#25464b]" x-model="location">
-                    </div>
+                    </button>
 
-                    <!-- LISTING TYPE DROPDOWN -->
-                    <div class="relative w-full">
-                        <button @click="typeOpen = !typeOpen"
-                            class="flex items-center justify-between w-full px-5 py-3 border rounded-xl">
-                            <div class="flex items-center gap-3 pr-20 text-nowrap">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="size-5">
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="32"
-                                        d="M403.29 32H280.36a14.46 14.46 0 0 0-10.2 4.2L24.4 281.9a28.85 28.85 0 0 0 0 40.7l117 117a28.86 28.86 0 0 0 40.71 0L427.8 194a14.46 14.46 0 0 0 4.2-10.2v-123A28.66 28.66 0 0 0 403.29 32" />
-                                    <path fill="currentColor" d="M352 144a32 32 0 1 1 32-32a32 32 0 0 1-32 32" />
-                                    <path fill="none" stroke="currentColor" stroke-linecap="round"
-                                        stroke-linejoin="round" stroke-width="32"
-                                        d="m230 480l262-262a13.8 13.8 0 0 0 4-10V80" />
-                                </svg>
-                                <span x-text="selectedType"></span>
-                            </div>
-
-                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <!-- OPTIONS -->
-                        <div x-show="typeOpen" @click.away="typeOpen = false"
-                            class="absolute z-20 w-full mt-2 bg-white shadow-lg rounded-xl">
-                            <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
-                                @click="selectedType = 'For Sale'; typeOpen = false">For Sale</div>
-                            <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
-                                @click="selectedType = 'For Rent'; typeOpen = false">For Rent</div>
-                            <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
-                                @click="selectedType = 'Pre-Selling'; typeOpen = false">Pre-Selling</div>
-                        </div>
-                    </div>
-
-                    <!-- LISTING CATEGORY DROPDOWN -->
-                    <div class="relative w-full">
-                        <button @click="categoryOpen = !categoryOpen"
-                            class="flex items-center justify-between w-full px-5 py-3 border rounded-xl">
-                            <div class="flex items-center gap-3 pr-20 text-nowrap">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                                    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="1">
-                                        <path stroke-width="1.5" d="M4 5v14h16V3" />
-                                        <path stroke-width="1.5"
-                                            d="M14 19v-5.463c0-2.143-4-1.953-4 0V19m4 3h-4M3 5l7.735-2.74c1.254-.347 1.276-.347 2.53 0L21 5" />
-                                        <path stroke-width="2" d="M12.012 8H12" />
-                                    </g>
-                                </svg>
-                                <span x-text="selectedCategory"></span>
-                            </div>
-
-                            <svg class="size-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-
-                        <!-- OPTIONS -->
-                        <div x-show="categoryOpen" @click.away="categoryOpen = false"
-                            class="absolute z-20 w-full mt-2 bg-white shadow-lg rounded-xl">
-                            <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
-                                @click="selectedCategory = 'Condominium'; categoryOpen = false">Condominium</div>
-                            <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
-                                @click="selectedCategory = 'House & Lot'; categoryOpen = false">House & Lot</div>
-                            <div class="px-5 py-3 cursor-pointer hover:bg-gray-100"
-                                @click="selectedCategory = 'Commercial'; categoryOpen = false">Commercial</div>
-                        </div>
-                    </div>
                 </div>
-
-                <!-- BUTTON -->
-                <button
-                    class="bg-[#25464b] hover:bg-[#0c2627] text-white rounded-lg px-5 py-4 flex items-center gap-2 text-nowrap">
-                    Find Property
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="size-6">
-                        <path fill="currentColor" fill-rule="evenodd"
-                            d="m16.31 15.561l4.114 4.115l-.848.848l-4.123-4.123a7 7 0 1 1 .857-.84M16.8 11a5.8 5.8 0 1 0-11.6 0a5.8 5.8 0 0 0 11.6 0" />
-                    </svg>
-                </button>
-
             </div>
         </div>
+
 
         {{-- Listing Category --}}
         <div class="container flex flex-col gap-10 px-3 py-20 mx-auto">
