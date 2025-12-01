@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="pb-36 bg-[#f5f5f5]">
+    <div class="pb-36 bg-[#f5f5f5] overflow-x-hidden">
         <x-banner pageBanner="images/aboutus-banner.png" page="About Us" />
 
         <div class="container grid grid-cols-1 gap-20 px-3 py-20 mx-auto xl:grid-cols-2">

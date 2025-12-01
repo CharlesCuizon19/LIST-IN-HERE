@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="bg-[#f5f5f5]">
+    <div class="bg-[#f5f5f5] overflow-x-hidden">
         <x-banner pageBanner="images/properties-banner.png" page="List of Properties" />
 
         <div class="container px-3 pt-20 mx-auto pb-36">
